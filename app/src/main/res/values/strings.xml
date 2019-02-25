@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">iTuneFlix</string>
-    <string name="empty_list">Empty List. Try searching for another movie</string>
+    <string name="empty_list">Empty List. Please input a movie title.</string>
 </resources>

@@ -28,17 +28,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:paddingBottom="@dimen/list_movie_padding"
-            android:paddingEnd="@dimen/list_movie_padding"
-            android:paddingStart="@dimen/list_movie_padding"
-            android:paddingTop="@dimen/list_movie_padding">
+            android:layout_margin="@dimen/top_paddng"
+            android:background="@color/app_black">
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/image_height"
-                android:background="@color/app_black">
+                android:layout_height="@dimen/image_height">
 
                 <ImageView
                     android:id="@+id/image_movie"
@@ -100,6 +96,8 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/top_paddng"
+            android:layout_marginStart="@dimen/top_paddng"
             android:padding="@dimen/padding_paragraph_margin"
             android:textColor="@android:color/white"/>
 

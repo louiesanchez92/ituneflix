@@ -20,7 +20,10 @@ import butterknife.OnClick;
 public class DetailedViewActivity extends AppCompatActivity {
 
     /**
-     * Bind Views
+     * Bind Views much faster and
+     * simplier than the traditional
+     * findviewbyid
+     * thanks to butterknife
      */
     @BindView(R.id.image_movie)
     ImageView movieImage;

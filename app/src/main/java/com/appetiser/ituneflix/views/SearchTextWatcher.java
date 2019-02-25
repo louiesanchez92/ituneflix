@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 public class SearchTextWatcher extends IFEditText {
 
     public interface Listener {
-        void onLoadFromDB(String text);
-
         void onLoadFromAPI();
     }
 
@@ -36,7 +34,6 @@ public class SearchTextWatcher extends IFEditText {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                listener.onLoadFromDB(charSequence.toString());
             }
 
             @Override

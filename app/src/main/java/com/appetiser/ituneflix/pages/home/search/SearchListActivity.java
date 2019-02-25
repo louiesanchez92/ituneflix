@@ -54,23 +54,6 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
     IFTextView recentlyText;
 
     /**
-     * This movie will be our featured movie
-     * and the contents will be displayed in the list header
-     */
-    private Movie featureMovie;
-
-
-    /**
-     * When the user did not type for about 1 second.
-     * get a new list from api
-     */
-    private int SEARCH_THRESHOLD_IN_MILLIS = 1000;
-    private int TICK_INTERVAL_IN_MILLS = 1000;
-
-    private CountDownTimer countDownTimer;
-
-
-    /**
      * Declare variables
      */
     private List<Movie> listMovies;
@@ -82,7 +65,6 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
 
     public SearchListActivity() {
         listMovies = new ArrayList<>();
-        featureMovie = new Movie();
     }
 
 
@@ -268,16 +250,12 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
 
     /**
      * Initialize search view
+     * Key and Editor Listener of search view
      */
     private void initSearch() {
 
         searchText.setOnEditorActionListener(searchKeyListener);
-
         searchText.watcher(new SearchTextWatcher.Listener() {
-            @Override
-            public void onLoadFromDB(String text) {
-            }
-
             @Override
             public void onLoadFromAPI() {
                 /**
@@ -290,7 +268,6 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
                 }
             }
         });
-
     }
 
     /**
