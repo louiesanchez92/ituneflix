@@ -1,24 +1,24 @@
 package com.appetiser.ituneflix.pages.home;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 
 import com.appetiser.ituneflix.R;
 
-import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends BaseHomeActivity {
 
-    @BindView(R.id.home_image)
-    ImageView homeImage;
-    @BindView(R.id.list_image)
-    ImageView listImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * Initialize view binding
+         */
+        ButterKnife.bind(this);
+
     }
 
     /**
