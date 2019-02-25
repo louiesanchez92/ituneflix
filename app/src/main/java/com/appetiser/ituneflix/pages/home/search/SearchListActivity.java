@@ -3,18 +3,22 @@ package com.appetiser.ituneflix.pages.home.search;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.appetiser.ituneflix.AppConstants;
 import com.appetiser.ituneflix.AppSessions;
 import com.appetiser.ituneflix.R;
 import com.appetiser.ituneflix.api.models.movies.Movie;
+import com.appetiser.ituneflix.helper.KeyboardHelper;
 import com.appetiser.ituneflix.pages.detail.DetailedViewActivity;
 import com.appetiser.ituneflix.views.IFTextView;
 import com.appetiser.ituneflix.views.SearchTextWatcher;
@@ -57,6 +61,16 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
 
 
     /**
+     * When the user did not type for about 1 second.
+     * get a new list from api
+     */
+    private int SEARCH_THRESHOLD_IN_MILLIS = 1000;
+    private int TICK_INTERVAL_IN_MILLS = 1000;
+
+    private CountDownTimer countDownTimer;
+
+
+    /**
      * Declare variables
      */
     private List<Movie> listMovies;
@@ -79,7 +93,7 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
         ButterKnife.bind(this);
 
         initLayoutManagers();
-        initAdapter();
+        initAdapter(listMovies);
         initializePresenter();
         loadMoviesFromDB();
         initSearch();
@@ -112,15 +126,16 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
     /**
      * Initialize Adapter
      */
-    private void initAdapter() {
+    private void initAdapter(List<Movie> moviesList) {
 
         if (topListAdapter == null) {
-            topListAdapter = new SearchListAdapter(listMovies, this, this);
+            topListAdapter = new SearchListAdapter(moviesList, this, this);
         }
 
         movieList.setAdapter(topListAdapter);
         topListAdapter.notifyDataSetChanged();
     }
+
 
     /**
      * Initializing presenter
@@ -250,11 +265,14 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
      */
     private void initSearch() {
 
+        searchText.setOnEditorActionListener(searchKeyListener);
+
         searchText.watcher(new SearchTextWatcher.Listener() {
             @Override
             public void onLoadFromDB(String text) {
-                showLoadingBar();
+
                 loadMoviesFromDB();
+                cancelCountDownTimer();
             }
 
             @Override
@@ -271,6 +289,26 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
         });
 
     }
+
+    /**
+     * Cancel countdown timer
+     */
+    private void cancelCountDownTimer() {
+        if (countDownTimer != null)
+            countDownTimer.cancel();
+
+    }
+
+    /**
+     * Hide key board after clicking search
+     */
+    TextView.OnEditorActionListener searchKeyListener = (v, actionId, event) -> {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            KeyboardHelper.hideKeyboard(v, this);
+            return true;
+        }
+        return false;
+    };
 
 
 }

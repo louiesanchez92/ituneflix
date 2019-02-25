@@ -5,11 +5,17 @@ import com.appetiser.ituneflix.api.models.movies.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Case;
 import io.realm.Realm;
 
 public class MoviesDB {
 
 
+    /**
+     * Get last searched movies with no filter
+     *
+     * @return
+     */
     public static List<Movie> getTopMoviesList() {
         try {
             Realm realm = Realm.getDefaultInstance();
@@ -20,10 +26,16 @@ public class MoviesDB {
         return new ArrayList<>();
     }
 
+    /**
+     * Get last searched movies with filter
+     * or the user searches for a certain image
+     *
+     * @return
+     */
     public static List<Movie> getTopMoviesListWithFilter(String search) {
         try {
             Realm realm = Realm.getDefaultInstance();
-            return (realm.where(Movie.class).contains("trackName", search).findAll());
+            return (realm.where(Movie.class).contains("trackName", search, Case.INSENSITIVE).findAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,16 +43,13 @@ public class MoviesDB {
     }
 
 
-    public static List<Movie> getFavoriteMovies() {
-        try {
-            Realm realm = Realm.getDefaultInstance();
-            return (realm.where(Movie.class).equalTo("favorite", true).findAll());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
+    /**
+     * Open realm transaction
+     * then delete all search list of movies
+     * then save new one.
+     *
+     * @param movies
+     */
     public static void saveAllTopList(List<Movie> movies) {
 
         Realm realm = Realm.getDefaultInstance();
@@ -51,6 +60,12 @@ public class MoviesDB {
 
     }
 
+    /**
+     * Get a single movie. or selected movie
+     *
+     * @param trackID
+     * @return
+     */
     public static Movie getSingleMovie(int trackID) {
 
         Realm realm = Realm.getDefaultInstance();
@@ -59,18 +74,6 @@ public class MoviesDB {
         realm.commitTransaction();
         return account;
 
-    }
-
-    public static void updateMovieMyListStatus(final Movie mov, final boolean favorite) {
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        Movie movie = realm.where(Movie.class).equalTo("trackId", mov.trackId).findFirst();
-        if (favorite)
-            movie.favorite = false;
-        else
-            movie.favorite = true;
-        realm.commitTransaction();
     }
 
 
