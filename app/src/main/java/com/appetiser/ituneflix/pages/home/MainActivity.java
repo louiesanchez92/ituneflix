@@ -50,6 +50,7 @@ public class MainActivity extends BaseHomeActivity {
          * when app loads
          */
         setUpInitialFragment();
+        arrangeIcons();
 
 
     }
@@ -80,6 +81,7 @@ public class MainActivity extends BaseHomeActivity {
             lastTabUserSelected = AppConstants.TOP_TAB;
             saveLastTabSelectedByUserInAppSession(AppConstants.TOP_TAB);
             replaceFragment();
+            arrangeIcons();
         }
     }
 
@@ -100,6 +102,7 @@ public class MainActivity extends BaseHomeActivity {
             lastTabUserSelected = AppConstants.SEARCH_TAB;
             saveLastTabSelectedByUserInAppSession(AppConstants.SEARCH_TAB);
             replaceFragment();
+            arrangeIcons();
         }
     }
 
@@ -120,6 +123,7 @@ public class MainActivity extends BaseHomeActivity {
             lastTabUserSelected = AppConstants.LIST_TAB;
             saveLastTabSelectedByUserInAppSession(AppConstants.LIST_TAB);
             replaceFragment();
+            arrangeIcons();
         }
     }
 
@@ -132,5 +136,46 @@ public class MainActivity extends BaseHomeActivity {
      */
     private void saveLastTabSelectedByUserInAppSession(int tab) {
         AppSessions.saveLastTab(tab);
+    }
+
+    /**
+     * This will display
+     * the proper icon color and style
+     * of bottom navigation image and text
+     * in short this is to emphasize or indicate
+     * that the user is in this tab.
+     */
+    protected void arrangeIcons() {
+
+        /**
+         * Set Default value first
+         */
+        homeImage.setImageResource(R.drawable.ic_home);
+        searchImage.setImageResource(R.drawable.ic_magnifying_glass);
+        listImage.setImageResource(R.drawable.ic_list);
+
+        homeLabel.setTextColor(getResources().getColor(R.color.gray));
+        searchLabel.setTextColor(getResources().getColor(R.color.gray));
+        listLabel.setTextColor(getResources().getColor(R.color.gray));
+
+        /**
+         * Set the selected image
+         * and white color to emphasize
+         * the tab status
+         */
+        switch (lastTabUserSelected) {
+            case 1:
+                homeImage.setImageResource(R.drawable.ic_home_selected);
+                homeLabel.setTextColor(getResources().getColor(R.color.white));
+                break;
+            case 2:
+                searchImage.setImageResource(R.drawable.ic_magnifying_glass_selected);
+                searchLabel.setTextColor(getResources().getColor(R.color.white));
+                break;
+            case 3:
+                listImage.setImageResource(R.drawable.ic_list_selected);
+                listLabel.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
     }
 }

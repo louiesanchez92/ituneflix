@@ -47,6 +47,7 @@ public class BaseHomeActivity extends AppCompatActivity {
         }
         getSupportFragmentManager().beginTransaction().add(R.id.content_layout, fragment).commit();
 
+
     }
 
     protected void replaceFragment() {
@@ -75,5 +76,6 @@ public class BaseHomeActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_layout, fragment).commit();
     }
+
 
 }
