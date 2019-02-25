@@ -1,9 +1,4 @@
 <resources>
     <string name="app_name">iTuneFlix</string>
-    <string name="my_list">My List</string>
-    <string name="home">Home</string>
-    <string name="search">Search</string>
-    <string name="info">Info</string>
-    <string name="empty_list">Empty List. Click to Refresh</string>
-    <string name="empty_favorites">Empty List. Please check my list</string>
+    <string name="empty_list">Empty List</string>
 </resources>

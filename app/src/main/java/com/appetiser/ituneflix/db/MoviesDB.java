@@ -13,12 +13,23 @@ public class MoviesDB {
     public static List<Movie> getTopMoviesList() {
         try {
             Realm realm = Realm.getDefaultInstance();
-            return (realm.where(Movie.class).equalTo("feature", true).findAll());
+            return (realm.where(Movie.class).findAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return new ArrayList<>();
     }
+
+    public static List<Movie> getTopMoviesListWithFilter(String search) {
+        try {
+            Realm realm = Realm.getDefaultInstance();
+            return (realm.where(Movie.class).contains("trackName", search).findAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
 
     public static List<Movie> getFavoriteMovies() {
         try {
@@ -34,6 +45,7 @@ public class MoviesDB {
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
+        realm.deleteAll();
         realm.copyToRealmOrUpdate(movies);
         realm.commitTransaction();
 

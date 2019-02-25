@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/main_layout"
     android:background="@android:color/black"
     android:paddingBottom="@dimen/list_movie_padding"
-    android:paddingEnd="@dimen/list_movie_padding_left_right"
-    android:paddingStart="@dimen/list_movie_padding_left_right"
+    android:paddingEnd="@dimen/list_movie_padding"
+    android:paddingStart="@dimen/list_movie_padding"
     android:paddingTop="@dimen/list_movie_padding">
 
     <android.support.v7.widget.CardView
@@ -68,74 +69,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_navigationlist_movie_height"
-                android:layout_alignParentBottom="true"
-                android:layout_toEndOf="@id/image_movie"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <RelativeLayout
-                    android:id="@+id/mylist_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/list_mylist"
-                        android:layout_width="@dimen/list_navigation_image_size"
-                        android:layout_height="@dimen/list_navigation_image_size"
-                        android:layout_centerHorizontal="true"
-                        android:contentDescription="@string/my_list"
-                        android:src="@drawable/ic_success"/>
-
-                    <com.appetiser.ituneflix.views.IFTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/list_mylist"
-                        android:layout_marginTop="@dimen/bottom_navigation_icon_and_text_space"
-                        android:gravity="center"
-                        android:text="@string/my_list"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/bottom_list_navigation_text_size"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/info_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:gravity="center">
-
-
-                    <ImageView
-                        android:id="@+id/list_image"
-                        android:layout_width="@dimen/list_navigation_image_size"
-                        android:layout_height="@dimen/list_navigation_image_size"
-                        android:layout_centerHorizontal="true"
-                        android:contentDescription="@string/my_list"
-                        android:src="@drawable/ic_info"/>
-
-                    <com.appetiser.ituneflix.views.IFTextView
-                        android:id="@+id/list_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/list_image"
-                        android:layout_marginTop="@dimen/bottom_navigation_icon_and_text_space"
-                        android:gravity="center"
-                        android:text="@string/info"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/bottom_list_navigation_text_size"/>
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
 
         </RelativeLayout>
 

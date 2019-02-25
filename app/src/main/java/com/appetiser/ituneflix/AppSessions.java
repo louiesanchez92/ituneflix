@@ -21,21 +21,56 @@ public class AppSessions {
         this.context = context;
     }
 
-    private static final String LAST_TAB = "last_tab";
-    private static final String LAST_TAB_KEY = "last_tab_key";
+    private static final String LAST_TRACK_ID = "last_track_tab";
+    private static final String LAST_TRACK_ID_KEY = "last_track_id_tab_key";
 
-    public static boolean saveLastTab(int tab) {
-        final SharedPreferences.Editor editor = context.getSharedPreferences(LAST_TAB,
+    private static final String LAST_DATE = "last_date";
+    private static final String LAST_DATE_KEY = "last_date_key";
+
+    private static final String LAST_ACTIVITY = "last_activity";
+    private static final String LAST_ACTIVITY_KEY = "last_activity_key";
+
+    public static boolean saveLastSearchDate(String date) {
+        final SharedPreferences.Editor editor = context.getSharedPreferences(LAST_DATE,
                 Context.MODE_PRIVATE).edit();
-        editor.putInt(LAST_TAB_KEY, tab);
+        editor.putString(LAST_DATE_KEY, date);
         return editor.commit();
     }
 
-    public static Integer restoreLastTab() {
-        final SharedPreferences savedSession = context.getSharedPreferences(LAST_TAB,
+    public static String restoreLastSearchDate() {
+        final SharedPreferences savedSession = context.getSharedPreferences(LAST_DATE,
                 Context.MODE_PRIVATE);
-        int tab = savedSession.getInt(LAST_TAB_KEY, AppConstants.TOP_TAB);
+        String tab = savedSession.getString(LAST_DATE_KEY, null);
         return tab;
+    }
+
+    public static boolean saveLastActivity(int tab) {
+        final SharedPreferences.Editor editor = context.getSharedPreferences(LAST_ACTIVITY,
+                Context.MODE_PRIVATE).edit();
+        editor.putInt(LAST_ACTIVITY_KEY, tab);
+        return editor.commit();
+    }
+
+    public static Integer restoreLastActivity() {
+        final SharedPreferences savedSession = context.getSharedPreferences(LAST_ACTIVITY,
+                Context.MODE_PRIVATE);
+        int tab = savedSession.getInt(LAST_ACTIVITY_KEY, AppConstants.MAIN_PAGE);
+        return tab;
+    }
+
+
+    public static boolean saveLastTrackID(int trackId) {
+        final SharedPreferences.Editor editor = context.getSharedPreferences(LAST_TRACK_ID,
+                Context.MODE_PRIVATE).edit();
+        editor.putInt(LAST_TRACK_ID_KEY, trackId);
+        return editor.commit();
+    }
+
+    public static Integer restoreLastTrackID() {
+        final SharedPreferences savedSession = context.getSharedPreferences(LAST_TRACK_ID,
+                Context.MODE_PRIVATE);
+        int trackId = savedSession.getInt(LAST_TRACK_ID_KEY, -1);
+        return trackId;
     }
 
 }

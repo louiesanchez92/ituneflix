@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg">
+
+    <!--Creating my own search bar -->
+
+    <RelativeLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_bar_size"
+        android:layout_marginTop="@dimen/top_paddng"
+        android:background="@color/search_bar_bg">
+
+        <ImageView
+            android:id="@+id/image_search"
+            android:layout_width="@dimen/clear_icon_size"
+            android:layout_height="@dimen/clear_icon_size"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/search_icon_padding"
+            android:layout_marginStart="@dimen/search_icon_padding"
+            android:src="@drawable/ic_magnifying_glass"/>
+
+        <RelativeLayout
+            android:id="@+id/progress_and_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/search_icon_padding"
+            android:layout_marginStart="@dimen/search_icon_padding">
+
+            <ImageView
+                android:id="@+id/image_cancel"
+                android:layout_width="@dimen/clear_icon_size"
+                android:layout_height="@dimen/clear_icon_size"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_cancel"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/clear_icon_size"
+                android:layout_height="@dimen/clear_icon_size"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <com.appetiser.ituneflix.views.SearchTextWatcher
+            android:id="@+id/text_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/image_search"
+            android:layout_toStartOf="@id/progress_and_cancel"
+            android:background="@null"
+            android:maxLines="1"
+            android:textSize="@dimen/search_text_size"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/recent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recently_layout"
+        android:layout_below="@id/search_bar"
+        android:background="@color/semi_transparent_black"
+        android:visibility="visible">
+
+        <com.appetiser.ituneflix.views.IFTextView
+            android:id="@+id/recently_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/padding_left_recently"
+            android:paddingEnd="@dimen/padding_left_recently"
+            android:paddingStart="@dimen/padding_left_recently"
+            android:text="Recently search movies last"
+            android:textColor="@color/gray"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movie_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/recent_layout"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+    <com.appetiser.ituneflix.views.IFTextView
+        android:id="@+id/empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/empty_list"
+        android:textColor="@android:color/white"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -1,10 +1,10 @@
-package com.appetiser.ituneflix.pages.home.top;
+package com.appetiser.ituneflix.pages.home.search;
 
 import com.appetiser.ituneflix.api.models.movies.Movie;
 
 import java.util.List;
 
-public interface TopListViewInterface {
+public interface SearchListViewInterface {
 
     /**
      * This will display the list of movies

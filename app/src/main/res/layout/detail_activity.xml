@@ -1,7 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:scrollbars="none">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_paddng"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/back_layout"
+            android:layout_width="@dimen/search_bar_size"
+            android:layout_height="@dimen/search_bar_size">
+
+            <ImageView
+                android:layout_width="@dimen/clear_icon_size"
+                android:layout_height="@dimen/clear_icon_size"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_go_back_left_arrow"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:paddingBottom="@dimen/list_movie_padding"
+            android:paddingEnd="@dimen/list_movie_padding"
+            android:paddingStart="@dimen/list_movie_padding"
+            android:paddingTop="@dimen/list_movie_padding">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_height"
+                android:background="@color/app_black">
+
+                <ImageView
+                    android:id="@+id/image_movie"
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/placeholder"
+                    android:scaleType="fitCenter"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/image_movie"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/list_movie_details_padding_top_bottom"
+                    android:paddingEnd="@dimen/list_movie_details_padding_left_right"
+                    android:paddingStart="@dimen/list_movie_details_padding_left_right"
+                    android:paddingTop="@dimen/list_movie_details_padding_top_bottom">
+
+                    <com.appetiser.ituneflix.views.IFTextView
+                        android:id="@+id/title_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="A star is Born (2018)"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/list_movie_title_text_size"
+                        android:textStyle="bold"/>
+
+                    <com.appetiser.ituneflix.views.IFTextView
+                        android:id="@+id/genre_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Sci Fi and Fantasy"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/list_movie_genre_text_size"
+                        android:textStyle="bold"/>
+
+                    <com.appetiser.ituneflix.views.IFTextView
+                        android:id="@+id/price_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="100 USD"
+                        android:textColor="@color/yellow_green"
+                        android:textSize="@dimen/list_movie_price_text_size"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <com.appetiser.ituneflix.views.IFTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_paragraph_margin"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</ScrollView>

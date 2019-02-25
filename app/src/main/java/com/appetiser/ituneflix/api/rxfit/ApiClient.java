@@ -1,6 +1,7 @@
 package com.appetiser.ituneflix.api.rxfit;
 
 import com.appetiser.ituneflix.api.models.movies.MovieResults;
+import com.appetiser.ituneflix.api.models.movies.SearchMovieResults;
 
 import java.util.Map;
 
@@ -10,9 +11,11 @@ import retrofit2.http.QueryMap;
 
 public interface ApiClient {
 
-    //sample only
     @GET("/search")
-    Observable<MovieResults> getSearch(@QueryMap Map<String, String> params);
+    Observable<MovieResults> getTopMovies(@QueryMap Map<String, String> params);
+
+    @GET("/search")
+    Observable<SearchMovieResults> getSearch(@QueryMap Map<String, String> params);
 
 
 }

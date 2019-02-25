@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.appetiser.ituneflix.pages.home.MainActivity;
+import com.appetiser.ituneflix.pages.home.search.SearchListActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -57,8 +57,15 @@ public class SplashActivity extends AppCompatActivity {
     private void proceed() {
         /**
          * Proceed to home page
+         * or detail page it depends on
+         * users last viewed page
          */
-        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+
+
+        Intent intent = new Intent(SplashActivity.this, SearchListActivity.class);
+        if (AppSessions.restoreLastActivity().equals(AppConstants.DETAIL_PAGE)) {
+            intent.putExtra("proceedToDetailView", true);
+        }
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         finish();

@@ -2,8 +2,7 @@ package com.appetiser.ituneflix;
 
 public class AppConstants {
 
-    public static int TOP_TAB = 1;
-    public static int SEARCH_TAB = 2;
-    public static int LIST_TAB = 3;
+    public static int MAIN_PAGE = 1;
+    public static int DETAIL_PAGE = 2;
 
 }

@@ -1,4 +1,4 @@
-package com.appetiser.ituneflix.pages.home.top;
+package com.appetiser.ituneflix.pages.home.search;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -19,19 +19,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SearchListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface SelectMovieListener {
         void select(Movie movie, int position);
-
-        void mylist(Movie movie, int position);
     }
 
     private SelectMovieListener listener;
     private Context context;
     private List<Movie> movies;
 
-    public TopListAdapter(List<Movie> movies, SelectMovieListener listener, Context context) {
+    public SearchListAdapter(List<Movie> movies, SelectMovieListener listener, Context context) {
         this.movies = movies;
         this.listener = listener;
         this.context = context;
@@ -41,18 +39,14 @@ public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         @BindView(R.id.image_movie)
         ImageView movieImage;
-        @BindView(R.id.info_layout)
-        RelativeLayout infoLayout;
-        @BindView(R.id.mylist_layout)
-        RelativeLayout myListLayout;
         @BindView(R.id.title_text)
         IFTextView titleText;
         @BindView(R.id.genre_text)
         IFTextView genreText;
         @BindView(R.id.price_text)
         IFTextView priceText;
-        @BindView(R.id.list_mylist)
-        ImageView listImage;
+        @BindView(R.id.main_layout)
+        RelativeLayout mainLayout;
 
         public ViewHolderData(View itemView) {
             super(itemView);
@@ -84,16 +78,8 @@ public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         holder.priceText.setText("" + movie.trackPrice + " " + movie.currency);
         holder.titleText.setText("" + movie.trackName);
         holder.genreText.setText("" + movie.primaryGenreName);
-        if (movie.favorite)
-            holder.listImage.setImageResource(R.drawable.ic_success);
-        else
-            holder.listImage.setImageResource(R.drawable.ic_plus);
 
-        holder.myListLayout.setOnClickListener(view -> {
-            listener.mylist(movie, position);
-        });
-
-        holder.infoLayout.setOnClickListener(view -> {
+        holder.mainLayout.setOnClickListener(view -> {
             listener.select(movie, position);
         });
 
