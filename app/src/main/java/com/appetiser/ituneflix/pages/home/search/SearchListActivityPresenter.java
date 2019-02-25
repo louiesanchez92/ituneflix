@@ -62,18 +62,34 @@ public class SearchListActivityPresenter implements SearchListActivityPresenterI
                  * Use the callback to display the movies
                  */
                 List<Movie> movies = responseBody.results;
+
                 /**
-                 * save movies to DB
-                 * to be use when app is reopen
+                 * Everytime there is a new list of search movies
+                 * This movies will overwrite the last search movies
+                 * and this list will be shown once the app is closed
+                 * and reopen by the user
                  */
-
-                Log.e("AAAAss", "AAAAAs" + movies.size());
-
                 if (!movies.isEmpty()) {
+                    /**
+                     * We save the current date
+                     * where we save the list of movies
+                     * This date will be displayed in the header part of the list
+                     */
                     AppSessions.saveLastSearchDate(TimeHelper.getCurrent());
+
+                    /**
+                     * Here below is the saving of search list of movies
+                     * happened
+                     */
                     MoviesDB.saveAllTopList(movies);
+                    /**
+                     * Display list of movies
+                     */
                     tvi.displayMovies(MoviesDB.getTopMoviesList());
                 } else {
+                    /**
+                     * Put an empty list alert
+                     */
                     tvi.displayError();
                 }
 

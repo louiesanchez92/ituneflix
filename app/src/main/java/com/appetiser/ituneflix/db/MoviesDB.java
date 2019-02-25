@@ -28,7 +28,7 @@ public class MoviesDB {
 
     /**
      * Get last searched movies with filter
-     * or the user searches for a certain image
+     * or the user searches for a certain movie
      *
      * @return
      */
@@ -45,8 +45,8 @@ public class MoviesDB {
 
     /**
      * Open realm transaction
-     * then delete all search list of movies
-     * then save new one.
+     * then delete all saved list of movies
+     * then save new set of movies.
      *
      * @param movies
      */
