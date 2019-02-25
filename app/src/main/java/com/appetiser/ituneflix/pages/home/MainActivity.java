@@ -1,16 +1,18 @@
 package com.appetiser.ituneflix.pages.home;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appetiser.ituneflix.AppConstants;
 import com.appetiser.ituneflix.AppSessions;
 import com.appetiser.ituneflix.R;
-import com.appetiser.ituneflix.api.ApiConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseHomeActivity {
 
@@ -66,8 +68,19 @@ public class MainActivity extends BaseHomeActivity {
      * where it can view list of top
      * rated movies in iTunes
      */
-    private void homeClick() {
-        saveLastTabSelectedByUserInAppSession(AppConstants.TOP_TAB);
+    @OnClick(R.id.home_layout)
+    void home() {
+        /**
+         * Check whether the user
+         * click the same tab where
+         * the user is currently viewing
+         * if yes no need to replace fragment
+         */
+        if (lastTabUserSelected != AppConstants.TOP_TAB) {
+            lastTabUserSelected = AppConstants.TOP_TAB;
+            saveLastTabSelectedByUserInAppSession(AppConstants.TOP_TAB);
+            replaceFragment();
+        }
     }
 
     /**
@@ -75,8 +88,19 @@ public class MainActivity extends BaseHomeActivity {
      * where it can search for movies
      * depending on search value
      */
-    private void searchClick() {
-        //saveLastTabSelectedByUserInAppSession(AppConstants.SEARCH_TAB);
+    @OnClick(R.id.search_layout)
+    void search() {
+        /**
+         * Check whether the user
+         * click the same tab where
+         * the user is currently viewing
+         * if yes no need to replace fragment
+         */
+        if (lastTabUserSelected != AppConstants.SEARCH_TAB) {
+            lastTabUserSelected = AppConstants.SEARCH_TAB;
+            saveLastTabSelectedByUserInAppSession(AppConstants.SEARCH_TAB);
+            replaceFragment();
+        }
     }
 
     /**
@@ -84,9 +108,21 @@ public class MainActivity extends BaseHomeActivity {
      * where it can view list of favorite
      * movies by the user
      */
-    private void myListClick() {
-        // saveLastTabSelectedByUserInAppSession(AppConstants.LIST_TAB);
+    @OnClick(R.id.mylist_layout)
+    void mylist() {
+        /**
+         * Check whether the user
+         * click the same tab where
+         * the user is currently viewing
+         * if yes no need to replace fragment
+         */
+        if (lastTabUserSelected != AppConstants.LIST_TAB) {
+            lastTabUserSelected = AppConstants.LIST_TAB;
+            saveLastTabSelectedByUserInAppSession(AppConstants.LIST_TAB);
+            replaceFragment();
+        }
     }
+
 
     /**
      * This will save an integer indicating the last tab

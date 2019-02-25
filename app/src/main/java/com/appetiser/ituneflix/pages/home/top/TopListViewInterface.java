@@ -10,5 +10,6 @@ public interface TopListViewInterface {
      * This will display the list of movies
      */
     void displayMovies(List<Movie> movieList);
+    void displayError();
 
 }

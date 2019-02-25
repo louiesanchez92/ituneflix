@@ -10,7 +10,7 @@ public class Movie extends RealmObject {
     public String wrapperType;
     public String kind;
     public String artistName;
-    public String trackname;
+    public String trackName;
     public String trackCensoredName;
     public String trackViewUrl;
     public String previewUrl;
@@ -34,6 +34,7 @@ public class Movie extends RealmObject {
     public String longDescription;
     public boolean hasITunesExtras;
     public boolean favorite;
+    public boolean feature;
 
 
 }

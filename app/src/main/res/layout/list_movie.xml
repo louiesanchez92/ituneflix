@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
-    android:padding="@dimen/list_movie_padding">
+    android:paddingBottom="@dimen/list_movie_padding"
+    android:paddingEnd="@dimen/list_movie_padding_left_right"
+    android:paddingStart="@dimen/list_movie_padding_left_right"
+    android:paddingTop="@dimen/list_movie_padding">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,7 +22,8 @@
                 android:id="@+id/image_movie"
                 android:layout_width="@dimen/image_width"
                 android:layout_height="match_parent"
-                android:background="@color/image_placeholder"/>
+                android:background="@drawable/placeholder"
+                android:scaleType="fitCenter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    android:text="A star is Born (2018)"
                     android:textColor="@color/white"
                     android:textSize="@dimen/list_movie_title_text_size"
                     android:textStyle="bold"/>
@@ -47,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
+                    android:text="Sci Fi and Fantasy"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/list_movie_genre_text_size"
                     android:textStyle="bold"/>
@@ -56,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
+                    android:text="100 USD"
                     android:textColor="@color/yellow_green"
                     android:textSize="@dimen/list_movie_price_text_size"
                     android:textStyle="bold"/>
@@ -77,7 +83,6 @@
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackground"
                     android:gravity="center">
-
 
                     <ImageView
                         android:id="@+id/list_mylist"

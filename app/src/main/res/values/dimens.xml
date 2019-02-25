@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Main Page-->
     <dimen name="bottom_navigation_height">60dp</dimen>
-    <dimen name="bottom_navigationlist_movie_height">50dp</dimen>
-    <dimen name="list_navigation_image_size">17dp</dimen>
     <dimen name="bottom_list_navigation_text_size">8sp</dimen>
     <dimen name="bottom_navigation_icon_and_text_space">3dp</dimen>
     <dimen name="bottom_navigation_text_size">10sp</dimen>
+    <dimen name="image_width_header">134dp</dimen>
+    <dimen name="image_height_header">200dp</dimen>
+    <dimen name="header_list_height">300dp</dimen>
+    <dimen name="navigation_image_size">20dp</dimen>
+    <dimen name="image_top_header_padding">10dp</dimen>
+
+
+    <!--Top Tab Page-->
     <dimen name="list_movie_padding">3dp</dimen>
+    <dimen name="list_movie_padding_left_right">8dp</dimen>
     <dimen name="list_movie_details_padding_top_bottom">5dp</dimen>
     <dimen name="list_movie_details_padding_left_right">8dp</dimen>
-    <dimen name="image_width">100dp</dimen>
-    <dimen name="image_height">150dp</dimen>
     <dimen name="list_movie_title_text_size">18sp</dimen>
     <dimen name="list_movie_genre_text_size">12sp</dimen>
     <dimen name="list_movie_price_text_size">12sp</dimen>
-    <dimen name="navigation_image_size">20dp</dimen>
+    <dimen name="image_width">100dp</dimen>
+    <dimen name="title_text_header_size">20sp</dimen>
+    <dimen name="genre_text_header_size">14sp</dimen>
+    <dimen name="price_text_header_size">14sp</dimen>
+    <dimen name="image_height">150dp</dimen>
+    <dimen name="info_and_favorite_layout_margin">10dp</dimen>
+    <dimen name="info_and_favorite_layout_size">50dp</dimen>
+    <dimen name="list_navigation_image_size">17dp</dimen>
+    <dimen name="bottom_navigationlist_movie_height">50dp</dimen>
+
+    <!--My List Page-->
+    <dimen name="mylist_page_padding">20dp</dimen>
+    <dimen name="mylist_header_text">22sp</dimen>
+
 
 </resources>

@@ -1,4 +1,4 @@
-package com.appetiser.ituneflix.pages.home.top;
+package com.appetiser.ituneflix.pages.home.list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface SelectMovieListener {
         void select(Movie movie, int position);
@@ -31,7 +31,7 @@ public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context context;
     private List<Movie> movies;
 
-    public TopListAdapter(List<Movie> movies, SelectMovieListener listener, Context context) {
+    public MyListAdapter(List<Movie> movies, SelectMovieListener listener, Context context) {
         this.movies = movies;
         this.listener = listener;
         this.context = context;
@@ -96,6 +96,7 @@ public class TopListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         holder.infoLayout.setOnClickListener(view -> {
             listener.select(movie, position);
         });
+
 
     }
 }

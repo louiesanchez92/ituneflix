@@ -1,9 +1,8 @@
 package com.appetiser.ituneflix.pages.home;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.appetiser.ituneflix.AppConstants;
 import com.appetiser.ituneflix.R;
@@ -11,10 +10,7 @@ import com.appetiser.ituneflix.pages.home.list.MyListFragment;
 import com.appetiser.ituneflix.pages.home.search.SearchFragment;
 import com.appetiser.ituneflix.pages.home.top.TopListFragment;
 
-import butterknife.BindView;
-
 public class BaseHomeActivity extends AppCompatActivity {
-
 
 
     /**
@@ -51,6 +47,33 @@ public class BaseHomeActivity extends AppCompatActivity {
         }
         getSupportFragmentManager().beginTransaction().add(R.id.content_layout, fragment).commit();
 
+    }
+
+    protected void replaceFragment() {
+
+        switch (lastTabUserSelected) {
+            case 1:
+                /**
+                 * replace current fragment to Top List Fragment
+                 */
+                fragment = topListFragment;
+                break;
+            case 2:
+                /**
+                 * replace current fragment to Search List Fragment
+                 */
+                fragment = searchFragment;
+                break;
+            case 3:
+                /**
+                 * replace current fragment to My List Fragment
+                 */
+                fragment = myListFragment;
+                break;
+        }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_layout, fragment).commit();
     }
 
 }

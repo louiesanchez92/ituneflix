@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:onClick="homeClick">
+            android:id="@+id/home_layout">
 
             <ImageView
                 android:id="@+id/home_image"
@@ -51,7 +51,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:onClick="searchClick">
+            android:id="@+id/search_layout">
 
 
             <ImageView
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:onClick="myListClick">
+            android:id="@+id/mylist_layout">
 
 
             <ImageView
