@@ -199,6 +199,8 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
     @Override
     public void displayError() {
         hideLoadingBar();
+        listMovies.clear();
+        topListAdapter.notifyDataSetChanged();
         checkEmptyList();
     }
 
@@ -207,6 +209,10 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
         loadMovies();
     }
 
+    /**
+     * If search bar is cleared
+     * we load list save in our DB
+     */
     @OnClick(R.id.image_cancel)
     void cancel() {
         searchText.setText("");
@@ -270,9 +276,6 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
         searchText.watcher(new SearchTextWatcher.Listener() {
             @Override
             public void onLoadFromDB(String text) {
-
-                loadMoviesFromDB();
-                cancelCountDownTimer();
             }
 
             @Override
@@ -287,15 +290,6 @@ public class SearchListActivity extends Activity implements SearchListAdapter.Se
                 }
             }
         });
-
-    }
-
-    /**
-     * Cancel countdown timer
-     */
-    private void cancelCountDownTimer() {
-        if (countDownTimer != null)
-            countDownTimer.cancel();
 
     }
 

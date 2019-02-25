@@ -20,6 +20,8 @@ public class ItuneFlixApplication extends Application {
 
         /**
          * Initialize realm
+         * add DBMigration also
+         * for future use
          */
         Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration.Builder()

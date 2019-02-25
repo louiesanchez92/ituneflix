@@ -1,6 +1,7 @@
 package com.appetiser.ituneflix.pages.home.search;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.appetiser.ituneflix.AppSessions;
 import com.appetiser.ituneflix.api.models.movies.Movie;
@@ -62,8 +63,12 @@ public class SearchListActivityPresenter implements SearchListActivityPresenterI
                  */
                 List<Movie> movies = responseBody.results;
                 /**
-                 * save featured movies to DB
+                 * save movies to DB
+                 * to be use when app is reopen
                  */
+
+                Log.e("AAAAss", "AAAAAs" + movies.size());
+
                 if (!movies.isEmpty()) {
                     AppSessions.saveLastSearchDate(TimeHelper.getCurrent());
                     MoviesDB.saveAllTopList(movies);
@@ -85,6 +90,7 @@ public class SearchListActivityPresenter implements SearchListActivityPresenterI
 
             @Override
             public void onComplete() {
+
             }
         };
     }

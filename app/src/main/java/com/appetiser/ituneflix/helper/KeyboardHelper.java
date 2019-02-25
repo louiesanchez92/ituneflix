@@ -6,6 +6,11 @@ import android.view.inputmethod.InputMethodManager;
 
 public class KeyboardHelper {
 
+    /**
+     * handles hiding of keyboard
+     * @param v
+     * @param context
+     */
     public static void hideKeyboard(View v, Context context) {
         InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(v.getWindowToken(),

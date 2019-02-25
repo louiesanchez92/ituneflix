@@ -78,7 +78,9 @@ public class DetailedViewActivity extends AppCompatActivity {
 
     private void loadMovie() {
         /**
-         * Load image
+         * Loads movies data
+         * like movie artwork, price, currency, trackname
+         * and genre
          */
         Glide.with(this).load(movie.artworkUrl100).apply(new RequestOptions().override(200, 200)).into(movieImage);
 
