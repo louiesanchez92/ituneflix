@@ -1,31 +1,56 @@
 package com.appetiser.ituneflix.pages.home;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appetiser.ituneflix.AppConstants;
 import com.appetiser.ituneflix.R;
+import com.appetiser.ituneflix.pages.home.list.MyListFragment;
+import com.appetiser.ituneflix.pages.home.search.SearchFragment;
+import com.appetiser.ituneflix.pages.home.top.TopListFragment;
 
 import butterknife.BindView;
 
 public class BaseHomeActivity extends AppCompatActivity {
 
+
+
     /**
-     * Binding views much faster than the traditional
-     * find view by id method
-     * Thanks to butterknife.
+     * Initializing fragments
      */
-    @BindView(R.id.home_image)
-    ImageView homeImage;
-    @BindView(R.id.list_image)
-    ImageView listImage;
-    @BindView(R.id.search_image)
-    ImageView searchImage;
-    @BindView(R.id.list_label)
-    TextView listLabel;
-    @BindView(R.id.home_label)
-    TextView homeLabel;
-    @BindView(R.id.search_label)
-    TextView searchLabel;
+    protected SearchFragment searchFragment = new SearchFragment();
+    protected TopListFragment topListFragment = new TopListFragment();
+    protected MyListFragment myListFragment = new MyListFragment();
+    protected Fragment fragment;
+
+    protected int lastTabUserSelected = AppConstants.TOP_TAB;
+
+    protected void setUpInitialFragment() {
+
+        switch (lastTabUserSelected) {
+            case 1:
+                /**
+                 * show top tab
+                 */
+                fragment = topListFragment;
+                break;
+            case 2:
+                /**
+                 * show search tab
+                 */
+                fragment = searchFragment;
+                break;
+            case 3:
+                /**
+                 * show list tab
+                 */
+                fragment = myListFragment;
+                break;
+        }
+        getSupportFragmentManager().beginTransaction().add(R.id.content_layout, fragment).commit();
+
+    }
 
 }

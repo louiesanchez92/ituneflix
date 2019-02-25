@@ -12,6 +12,15 @@ public class ItuneFlixApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
+
+        /**
+         * Initialize app sessions
+         */
+        new AppSessions(this);
+
+        /**
+         * Initialize realm
+         */
         Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("mazaya_consumer.realm")

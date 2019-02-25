@@ -7,6 +7,8 @@
     <!--Home Page-->
     <color name="white">#FFFFFF</color>
     <color name="gray">#6D6D6D</color>
+    <color name="image_placeholder">#343434</color>
     <color name="app_black">#121212</color>
+    <color name="yellow_green">#23DA8B</color>
 
 </resources>
